@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {TableColumn} from '../table/TableColumn';
-import {Customer} from './customer';
+import { Component, OnInit } from '@angular/core';
+import { TableColumn } from '../table/TableColumn';
+import { Customer } from './customer';
 
 @Component({
   selector: 'app-customers',
@@ -21,6 +21,7 @@ export class CustomersComponent implements OnInit {
     this.initColumns();
   }
 
+  /* *** API *** */
   getCustomers(): Customer[] {
     return [
       {

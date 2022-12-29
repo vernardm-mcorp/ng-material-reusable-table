@@ -1,20 +1,20 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {TableColumn} from './TableColumn';
-import {MatSort, Sort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { TableColumn } from './TableColumn';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'custom-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class MCorpReuseableTable implements OnInit, AfterViewInit {
 
   public tableDataSource = new MatTableDataSource([]);
   public displayedColumns: string[];
-  @ViewChild(MatPaginator, {static: false}) matPaginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) matSort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) matPaginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) matSort: MatSort;
 
   @Input() isPageable = false;
   @Input() isSortable = false;
