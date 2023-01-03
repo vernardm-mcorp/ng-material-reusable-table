@@ -1,0 +1,10 @@
+<custom-table [tableData]="vaccineGroups"
+    [tableColumns]="vaxGroupTableColumns"
+    [isFilterable]="true"
+    [isPageable]="true"
+    [paginationSizes]="[25,50,100]"
+    [defaultPageSize]="5"
+    (sort)="sortData($event)"
+    [rowActionIcon]="'close'"
+    (rowAction)="removeVaccineGroup($event)">
+</custom-table>
