@@ -5,6 +5,6 @@
     [paginationSizes]="[25,50,100]"
     [defaultPageSize]="5"
     (sort)="sortData($event)"
-    [rowActionIcon]="'close'"
+    [rowActionType]="'mat-slide-toggle'"
     (rowAction)="removeVaccineGroup($event)">
 </custom-table>

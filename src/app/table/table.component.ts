@@ -19,6 +19,7 @@ export class MCorpReuseableTable implements OnInit, AfterViewInit {
     @Input() isSortable = false;
     @Input() isFilterable = false;
     @Input() tableColumns: TableColumn[] = [];
+    @Input() rowActionType: string;
     @Input() rowActionIcon: string;
     @Input() paginationSizes: number[] = [5, 10, 15];
     @Input() defaultPageSize = this.paginationSizes[1];
@@ -34,9 +35,9 @@ export class MCorpReuseableTable implements OnInit, AfterViewInit {
     constructor() {}
 
     ngOnInit(): void {
-        const columnNames = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
-        if (this.rowActionIcon) {
-            this.displayedColumns = [...columnNames, this.rowActionIcon];
+        const columnNames = this.tableColumns.map((tableColumn: TableColumn): string => tableColumn.name);
+        if (this.rowActionType) {
+            this.displayedColumns = [...columnNames, this.rowActionType];
         } else {
             this.displayedColumns = columnNames;
         }
@@ -47,24 +48,24 @@ export class MCorpReuseableTable implements OnInit, AfterViewInit {
         this.tableDataSource.paginator = this.matPaginator;
     }
 
-    setTableDataSource(data: any) {
+    setTableDataSource(data: any): void {
         this.tableDataSource = new MatTableDataSource<any>(data);
         this.tableDataSource.paginator = this.matPaginator;
         this.tableDataSource.sort = this.matSort;
     }
 
-    applyFilter(event: Event) {
+    applyFilter(event: Event): void {
         const filterValue = (event.target as HTMLInputElement).value;
         this.tableDataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    sortTable(sortParameters: Sort) {
+    sortTable(sortParameters: Sort): void {
         // defining name of data property, to sort by, instead of column name
-        sortParameters.active = this.tableColumns.find((column) => column.name === sortParameters.active).dataKey;
+        sortParameters.active = this.tableColumns.find((column): boolean => column.name === sortParameters.active).dataKey;
         this.sort.emit(sortParameters);
     }
 
-    emitRowAction(row: any) {
+    emitRowAction(row: any): void {
         this.rowAction.emit(row);
     }
 }
